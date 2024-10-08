@@ -13,7 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return view('products.layouts');
 });
-Route::resource('products', Controller::class);
+Route::get('/create', function () {
+    return view('products.create');
+});
+Route::get('/edit', function () {
+    return view('products.edit');
+});
+Route::get('/', function () {
+    return view('products.index');
+});
+Route::get('/show', function () {
+    return view('products.show');
+});
+
+Route::get('/', [Produc:class, 'show']);
+Route::get('/buku/create', [BukuController::class, 'create'])->name('products.create');
+Route::post('/buku', [BukuController::class, 'store'])->name('products.store');

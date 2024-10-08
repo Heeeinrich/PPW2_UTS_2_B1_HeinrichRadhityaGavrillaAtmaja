@@ -16,6 +16,7 @@ class Controller extends Controller
     {
         return view('index', [
             'products' => Product::latest()->paginate(3)
+            
         ]);
     }
 
